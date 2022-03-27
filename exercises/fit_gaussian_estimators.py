@@ -51,7 +51,7 @@ def test_univariate_gaussian():
                   title="Samples from ~N(10, 1) distribution and their PDFs",
                   xaxis=dict(title="value of sample"),
                   yaxis=dict(title="PDF of sample"),
-                  height=350)).show()
+                  height=350)).show( )
 
 
 def test_multivariate_gaussian():
