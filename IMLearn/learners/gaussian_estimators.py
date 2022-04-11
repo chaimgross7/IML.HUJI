@@ -1,5 +1,6 @@
 from __future__ import annotations
 import numpy as np
+import scipy.stats
 from numpy.linalg import inv, det, slogdet
 from numpy import pi
 from utils import *
@@ -188,9 +189,11 @@ class MultivariateGaussian:
         cov_inv = inv(self.cov_)
 
         exponent = np.einsum('ij,jk,ik->i', X_mu, cov_inv, X_mu)
+        # exponent2 = np.sum(X_mu @ cov_inv * X_mu, axis=1)
+        # print(exponent2.shape)
+        # print(exponent==exponent2)
         coff = 1 / (np.sqrt(det(self.cov_) * ((2 * pi) ** X.shape[1])))
         pdfs = coff * np.exp(exponent / -2)
-
         return pdfs
 
     @staticmethod

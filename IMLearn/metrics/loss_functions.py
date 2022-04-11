@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.metrics import mean_squared_error
 
 
 def mean_square_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
@@ -16,7 +17,8 @@ def mean_square_error(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     -------
     MSE of given predictions
     """
-    raise NotImplementedError()
+
+    return np.power(y_true - y_pred, 2).mean()
 
 
 def misclassification_error(y_true: np.ndarray, y_pred: np.ndarray, normalize: bool = True) -> float:
@@ -73,3 +75,8 @@ def cross_entropy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     Cross entropy of given predictions
     """
     raise NotImplementedError()
+
+
+# if __name__ == '__main__':
+
+

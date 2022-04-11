@@ -108,7 +108,7 @@ def test_multivariate_gaussian():
     f1, f3 = round(f1[indices[0][0]], 3), round(f3[indices[1][0]], 3)
     print(f"\nBest model was model with:\nf1: {f1}\nf3: {f3}")
 
-
+    multi.pdf(X)
 
 if __name__ == '__main__':
 
