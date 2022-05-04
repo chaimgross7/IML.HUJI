@@ -34,26 +34,26 @@ def split_train_test(X: pd.DataFrame, y: pd.Series, train_proportion: float = .7
 
     """
 
-    # n = X.shape[0]
-    #
-    # # randomly shuffle the rows
-    # permute = np.random.permutation(n)
-    # X = X.iloc[permute]
-    # y = y.iloc[permute]
-    #
-    # split_index = int(np.ceil(n * train_proportion))
-    #
-    # train_X, train_y, test_X, test_y = X[:split_index], y[:split_index], X[split_index:], y[split_index:]
-    #
-    # return train_X, train_y, test_X, test_y
-    df = pd.concat([X, y], axis=1)
-    n = df.shape[0]
-    frac = int(np.ceil(0.75 * X.shape[0]))
-    train = df.sample(frac)
-    test = df[~df.index.isin(train.index)]
-    train_X, train_y = train.iloc[:, :-1], train.iloc[:, -1:]
-    test_X, test_y = test.iloc[:, :-1], test.iloc[:, -1:]
+    n = X.shape[0]
+
+    # randomly shuffle the rows
+    permute = np.random.permutation(n)
+    X = X.iloc[permute]
+    y = y.iloc[permute]
+
+    split_index = int(np.ceil(n * train_proportion))
+
+    train_X, train_y, test_X, test_y = X[:split_index], y[:split_index], X[split_index:], y[split_index:]
+
     return train_X, train_y, test_X, test_y
+    # df = pd.concat([X, y], axis=1)
+    # n = df.shape[0]
+    # frac = int(np.ceil(0.75 * X.shape[0]))
+    # train = df.sample(frac)
+    # test = df[~df.index.isin(train.index)]
+    # train_X, train_y = train.iloc[:, :-1], train.iloc[:, -1:]
+    # test_X, test_y = test.iloc[:, :-1], test.iloc[:, -1:]
+    # return train_X, train_y, test_X, test_y
 
 def confusion_matrix(a: np.ndarray, b: np.ndarray) -> np.ndarray:
     """
